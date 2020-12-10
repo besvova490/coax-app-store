@@ -1,0 +1,27 @@
+.nav-bar-menu {
+    display: flex;
+    border-bottom: 1px solid;
+    height: 3rem;
+    align-items: center;
+}
+.nav-bar-menu-item {
+    float: left;
+    margin: auto 0.3rem;
+    font-size: 1.5rem;
+    border: 1px solid transparent;
+    border-right: 1px solid;
+    transition: all .5s;
+    padding-right: 0.4rem;
+}
+.nav-bar-menu-item.nav-bar-card{
+    margin-left: auto;
+    border: 1px solid transparent;
+}
+
+.nav-bar-menu-item:hover {
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+
+
+

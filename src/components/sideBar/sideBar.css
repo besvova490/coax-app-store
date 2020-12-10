@@ -1,0 +1,16 @@
+.sidebar-wrapper {
+    padding: 1.5rem;
+    background-color: gainsboro;
+}
+.sidebar-nav {
+    list-style: none;
+}
+.sidebar-search-input {
+    background: none;
+    border: none;
+    border-bottom: 1px solid;
+    margin-right: 1rem;
+}
+.sidebar-div {
+    margin: 2rem auto;
+}
