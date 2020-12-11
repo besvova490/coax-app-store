@@ -1,6 +1,6 @@
 import API from "./index";
 
-export async function getAllBooks() {
-    const resp = await API.get('volumes', {params: {q: 'flowers', projection:'lite', filter: 'paid-ebooks'}})
+export async function getBooks(params) {
+    const resp = await API.get('volumes', {params: {q: 'history', projection:'lite', filter: 'paid-ebooks', maxResults: 10, startIndex: 0, ...params}})
     return resp.data.items
 }

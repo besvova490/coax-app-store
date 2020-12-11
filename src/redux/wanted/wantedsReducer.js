@@ -2,20 +2,21 @@ import * as types from './wantedsActionsTypes'
 
 const initialState = {
     error: false,
-    wantedList: []
+    wantedList: {}
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case types.ADD_TO_WANTED_LIST: {
             return {
-                ...state, wantedList: [...state.wantedList, action.payload]
+                ...state, wantedList: {...state.wantedList, [action.payload.id]: action.payload}
             }
         }
         case types.DEL_FROM_WANTED_LIST: {
-            const itemIndex = state.wantedList.findIndex((item) => action.payload.id === item.id)
+            const newWontedList = JSON.parse(JSON.stringify(state.wantedList))
+            delete newWontedList[action.payload.id]
             return {
-                ...state, wantedList: [...state.wantedList.slice(0, itemIndex), ...state.wantedList.slice(itemIndex + 1)]
+                ...state, wantedList: {...newWontedList}
             }
         }
         default:
