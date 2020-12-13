@@ -5,10 +5,9 @@ import {addToCartList, delFromCartList, decFromCartList, updateCartList} from '.
 
 import CardList from "../../components/cardList/cardList";
 
-const CardPage = ({ itemsCard, totalPrice, addToCartList, delFromCartList, decFromCartList, updateCartList}) => {
+const CartPage = ({ itemsCard, totalPrice, addToCartList, delFromCartList, decFromCartList, updateCartList}) => {
     return (
         <div>
-            <h1>Card Page</h1>
             <CardList itemsCard={itemsCard}
                       totalPrice={totalPrice}
                       addToCartList={addToCartList}
@@ -26,4 +25,4 @@ const mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,
     {addToCartList, delFromCartList, decFromCartList, updateCartList}
-    )(CardPage);
+    )(CartPage);

@@ -1,14 +1,26 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
+
 import './header.css'
 const Header = () => {
     return (
-        <nav className="nav-bar-menu">
-            <Link className="nav-bar-menu-item" aria-current="page" to="/">Home</Link>
-            <Link className="nav-bar-menu-item" to="/wanted-page/">Wanted</Link>
-            <Link className="nav-bar-menu-item nav-bar-card" to="/card-page/"><i className="fa fa-shopping-basket" aria-hidden="true"/></Link>
-        </nav>
+        <div className="row naw-bar">
+            <div className="store-logo col-2">
+                <Link to={{
+                    pathname: "/",
+                    state: {}
+                }}>Side bar <i className="fa fa-book" aria-hidden="true"/></Link>
+            </div>
+            <nav className="nav-menu col-10">
+                <Link to={{
+                    pathname: "/",
+                    state: {}
+                }}>Home</Link>
+                <Link to="/favorites-page/">Favorites</Link>
+                <Link to="/cart-page/"><i className="fa fa-shopping-basket" aria-hidden="true"/></Link>
+            </nav>
+        </div>
     );
 }
 

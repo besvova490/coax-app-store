@@ -9,14 +9,14 @@ import rootReducer from "./rootReducer"
 const persistConfig = {
     key: 'root',
     storage,
-    blacklist: ['product']
+    blacklist: ['product', 'productReducer']
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 const initialiseSagaMiddleware = createSagaMiddleware()
 const store = createStore(
     persistedReducer,
     compose(applyMiddleware(initialiseSagaMiddleware),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
+        process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
 )
 const persistor = persistStore(store)
 

@@ -1,0 +1,13 @@
+.product-item {
+    margin:3rem auto;
+    display: flex;
+}
+.product-content {
+    padding: 0 4rem;
+}
+.product-content-li {
+    padding-top: 1rem;
+}
+.product-content-ul {
+    padding-right: 13rem;
+}

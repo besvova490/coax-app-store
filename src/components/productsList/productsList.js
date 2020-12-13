@@ -1,26 +1,33 @@
 import React from "react";
-import ProductsItems from "../productsItems/productsItems";
 import InfiniteScroll from 'react-infinite-scroller';
-let startIndex = 10
-const ProductsList = ({productsBooks, toggleWantedList, addToCartList, getAllProductsRequestAction}) => {
+
+import ProductsItems from "../productsItems/productsItems";
+import Loader from "../loader/loader";
+
+const ProductsList = ({productsBooks, toggleWantedList, addToCartList, getAllProductsRequestAction, wantedItems, error}) => {
+    let startIndex = 12
     const loadMore = () => {
         getAllProductsRequestAction({startIndex: startIndex})
-        startIndex += 10
+        startIndex += 12
+    }
+    if (error) {
+        return (
+            <div className="alert alert-danger" role="alert">
+            This is a danger alert—check it out!
+            </div>
+        )
     }
     return (
-        <div className='container'>
-            <div className='row'>
-                <InfiniteScroll loadMore={loadMore} hasMore={true} loader={<div className="loader" key={0}>Loading ...</div>}>
-                {
-                    productsBooks.map(item => <ProductsItems key={item.id}
-                                                     itemBook={item}
-                                                     buttonLabel='Add to wanted'
-                                                     toggleWantedList={toggleWantedList}
-                                                     addToCartList={addToCartList}/>)
-                }
-                </InfiniteScroll>
-            </div>
-        </div>
+        <InfiniteScroll className='row items-list' loadMore={loadMore} hasMore={!error} loader={<Loader key={"loader"}/>}>
+        {
+            productsBooks.map(item => <ProductsItems key={item.id}
+                                             itemBook={item}
+                                             buttonLabel='Add to wanted'
+                                             toggleWantedList={toggleWantedList}
+                                             addToCartList={addToCartList}
+                                             wantedItems={wantedItems}/>)
+        }
+        </InfiniteScroll>
     );
 }
 

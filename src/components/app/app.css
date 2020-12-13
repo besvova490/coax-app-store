@@ -1,0 +1,11 @@
+button:focus {
+    outline: none;
+}
+button {
+    border: none;
+    background: none;
+}
+ul{
+    list-style: none;
+    padding: 0;
+}

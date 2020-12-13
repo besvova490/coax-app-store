@@ -1,0 +1,23 @@
+.nav-bar-search {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+    font-size: 1.3rem;
+}
+.nav-bar-search-from > input {
+    color: rgba(55, 60, 66, 1);
+    background: none;
+    border: none;
+    border-bottom: 1px solid rgb(152,154,158);
+}
+.nav-bar-search-from > input:focus {
+    outline: none;
+}
+.nav-bar-button-search{
+    font-size: 1.5rem;
+    color: rgb(152,154,158);
+    transition: .5s all;
+}
+.nav-bar-button-search:hover {
+    color: rgba(55, 60, 66, 1);
+}

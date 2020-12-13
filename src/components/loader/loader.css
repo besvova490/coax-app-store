@@ -1,0 +1,64 @@
+@keyframes ldio-rgfveuzqkvc {
+    0% { transform: translate(18px,86px) scale(0); }
+    25% { transform: translate(18px,86px) scale(0); }
+    50% { transform: translate(18px,86px) scale(1); }
+    75% { transform: translate(86px,86px) scale(1); }
+    100% { transform: translate(154px,86px) scale(1); }
+}
+@keyframes ldio-rgfveuzqkvc-r {
+    0% { transform: translate(154px,86px) scale(1); }
+    100% { transform: translate(154px,86px) scale(0); }
+}
+@keyframes ldio-rgfveuzqkvc-c {
+    0% { background: #93dbe9 }
+    25% { background: #3b4368 }
+    50% { background: #5e6fa3 }
+    75% { background: #689cc5 }
+    100% { background: #93dbe9 }
+}
+.ldio-rgfveuzqkvc div {
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    transform: translate(86px,86px) scale(1);
+    background: #93dbe9;
+    animation: ldio-rgfveuzqkvc 1.639344262295082s infinite cubic-bezier(0,0.5,0.5,1);
+}
+.ldio-rgfveuzqkvc div:nth-child(1) {
+    background: #689cc5;
+    transform: translate(154px,86px) scale(1);
+    animation: ldio-rgfveuzqkvc-r 0.4098360655737705s infinite cubic-bezier(0,0.5,0.5,1), ldio-rgfveuzqkvc-c 1.639344262295082s infinite step-start;
+}.ldio-rgfveuzqkvc div:nth-child(2) {
+     animation-delay: -0.4098360655737705s;
+     background: #93dbe9;
+ }.ldio-rgfveuzqkvc div:nth-child(3) {
+      animation-delay: -0.819672131147541s;
+      background: #689cc5;
+  }.ldio-rgfveuzqkvc div:nth-child(4) {
+       animation-delay: -1.2295081967213115s;
+       background: #5e6fa3;
+   }.ldio-rgfveuzqkvc div:nth-child(5) {
+        animation-delay: -1.639344262295082s;
+        background: #3b4368;
+    }
+.loadingio-spinner-ellipsis-majn6lld8n {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    overflow: hidden;
+}
+.ldio-rgfveuzqkvc {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
+    transform-origin: 0 0;
+}
+.ldio-rgfveuzqkvc div { box-sizing: content-box; }
+.loader-main-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

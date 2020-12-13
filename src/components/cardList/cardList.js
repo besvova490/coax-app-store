@@ -6,14 +6,23 @@ const ItemCart = ({item, index, addToCartList, delFromCartList, decFromCartList}
     return (
         <tr>
             <th scope="row">{index + 1}</th>
-            <td>{item.volumeInfo.title}</td>
+            <td>{item.title.slice(0, 50)}...</td>
             <td>{item.quantity}</td>
-            <td>${(item.quantity * item.saleInfo.listPrice.amount).toFixed(2)}</td>
+            <td>${(item.quantity * item.price).toFixed(2)}</td>
             <td>
-                <div className='action-buttons'>
-                    <button className='fa-button plus' onClick={() => addToCartList(item)}><i className="fa fa-plus-square-o" aria-hidden="true"/></button>
-                    <button className='fa-button minus' onClick={() => decFromCartList(item)}><i className="fa fa-minus-square-o" aria-hidden="true"/></button>
-                    <button className='fa-button trash' onClick={() => delFromCartList(item)}><i className="fa fa-trash-o" aria-hidden="true"/></button>
+                <div className="cart-action-buttons">
+                    <button className="cart-action-button"
+                            onClick={() => addToCartList(item)}>
+                        <i className="fa fa-plus-square-o" aria-hidden="true"/>
+                    </button>
+                    <button className="cart-action-button"
+                            onClick={() => decFromCartList(item)}>
+                        <i className="fa fa-minus-square-o" aria-hidden="true"/>
+                    </button>
+                    <button className="cart-action-button"
+                            onClick={() => delFromCartList(item)}>
+                        <i className="fa fa-trash-o" aria-hidden="true"/>
+                    </button>
                 </div>
             </td>
         </tr>
@@ -56,7 +65,7 @@ class CardList extends React.Component {
                     }
                     </tbody>
                 </table>
-                <div className='total-amount'><span>Total: ${totalPrice}</span></div>
+                <div className="cart-total-price"><span>Total: $</span><span>{totalPrice}</span></div>
             </div>
         );
     }

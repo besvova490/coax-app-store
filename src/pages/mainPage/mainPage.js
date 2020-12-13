@@ -3,75 +3,83 @@ import {connect} from "react-redux"
 
 import ProductsList from "../../components/productsList/productsList";
 import SideBar from "../../components/sideBar/sideBar";
+import SearchForm from "../../components/searchForm/searchForm";
 
-import {getAllProductsRequestAction, getProductsByCategoryRequestAction, sortedProducts} from '../../redux/products/productsActions'
-import {addToWantedList} from '../../redux/wanted/wantedsActions'
-import {addToCartList} from '../../redux/cart/cartActions'
+import {toggleToWantedList} from "../../redux/wanted/wantedsActions";
+import {addToCartList} from "../../redux/cart/cartActions";
+import * as actions from '../../redux/products/productsActions'
 
 class MainPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            search: ''
+            search: ""
         }
     }
     componentDidMount() {
-        this.props.getAllProductsRequestAction({startIndex: 0})
+        this.props.location.state = undefined
+        if( !this.props.match.params.category) {
+            this.props.getAllProductsRequestAction({startIndex: 0})
+        } else {
+            this.props.getProductsByCategoryRequestAction({startIndex: 0, q: `subject:${this.props.match.params.category}`})
+        }
+    }
+    componentDidUpdate() {
+        if (this.props.location.state) {
+            this.props.getAllProductsRequestAction({startIndex: 0})
+            this.props.location.state = undefined
+        }
     }
 
-    onChangeInput = (event) => {
+    handleChange = (event) => {
         this.setState({search: event.target.value})
     }
-    compareItemPrice = (itemA, itemB) => {
-        return itemA.saleInfo.listPrice.amount - itemB.saleInfo.listPrice.amount
-    }
-    sortItemsByPrice = (action, items) => {
-        action(items.sort(this.compareItemPrice))
+    handleSubmit = (event) => {
+        event.preventDefault()
+        this.props.getAllProductsRequestAction({startIndex: 0, q: this.state.search})
+        this.setState({search: ""})
     }
     render() {
         const {
-            addToWantedList,
             addToCartList,
-            getAllProductsRequestAction,
             allProducts,
+            error,
+            getAllBooksInfinityScrollRequestAction,
             getProductsByCategoryRequestAction,
-            sortedProducts
+            getSortedProductsRequestAction,
+            sortedProducts,
+            toggleToWantedList,
+            wantedItems,
         } = this.props
-        const { search } = this.state
-        if (this.props.processing) {
-            return <h2>Loading ....</h2>
-        }
-        const items = Object.keys(allProducts).map((key) => allProducts[key])
-        const filteredProducts = items.filter(item => {return item.volumeInfo.title.toLowerCase().indexOf(search.toLowerCase()) !== -1})
-        if (!filteredProducts.length) {
-            return (
-                <div className='row'>
-                    <SideBar onChangeInput={this.onChangeInput}/>
-                    <h1>Now results</h1>
-                </div>
-            )
-        }
         return (
-            <div className='row'>
-                <SideBar onChangeInput={this.onChangeInput}
-                         getByCategory={getProductsByCategoryRequestAction}
-                         sortedByPrice={() => this.sortItemsByPrice(sortedProducts, items)}/>
+            <div className='row main-div'>
+                <SideBar getByCategory={getProductsByCategoryRequestAction}
+                         sortedBy={getSortedProductsRequestAction}/>
                 <div className='col-md-10'>
-                        <ProductsList productsBooks={filteredProducts}
-                                      toggleWantedList={addToWantedList}
-                                      addToCartList={addToCartList}
-                                      getAllProductsRequestAction={getAllProductsRequestAction}
-                                      sortedProducts={sortedProducts}/>
+                    <SearchForm handleChange={this.handleChange}
+                                handleSubmit={this.handleSubmit}
+                                value={this.state.search}/>
+                    <ProductsList productsBooks={allProducts}
+                                  toggleWantedList={toggleToWantedList}
+                                  addToCartList={addToCartList}
+                                  getAllProductsRequestAction={getAllBooksInfinityScrollRequestAction}
+                                  sortedProducts={sortedProducts}
+                                  wantedItems={wantedItems}
+                                  error={error}/>
                 </div>
             </div>
         );
     }
 }
 const mapStateToProps = (state) => {
-    return {...state.product}
+    return {
+        error: state.product.error,
+        allProducts: state.product.allProducts,
+        wantedItems: state.wanted.wantedList
+    }
 }
 
 export default connect(
     mapStateToProps,
-    {getAllProductsRequestAction, addToWantedList, addToCartList, getProductsByCategoryRequestAction, sortedProducts}
+    {...actions, toggleToWantedList, addToCartList}
     )(MainPage);

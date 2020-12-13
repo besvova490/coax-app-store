@@ -15,7 +15,7 @@ export function delFromCartList(payload) {
 export function updateCartList(payload) {
     const items = Object.keys(payload).map((key) => payload[key])
     let totalPrice = items.reduce((sum, product) => {
-        sum += product.quantity * product.saleInfo.listPrice.amount;
+        sum += product.quantity * product.price;
         return sum;
         }, 0)
     totalPrice = totalPrice.toFixed(2)

@@ -1,16 +1,40 @@
-.sidebar-wrapper {
-    padding: 1.5rem;
-    background-color: gainsboro;
+.side-bar {
+    height: 91vh;
+    background: rgba(55, 60, 66, 1);
+    margin: 0;
+    padding: 0;
 }
-.sidebar-nav {
-    list-style: none;
+.side-bar-main {
+    padding: 0 1rem;
 }
-.sidebar-search-input {
-    background: none;
-    border: none;
-    border-bottom: 1px solid;
-    margin-right: 1rem;
+.side-bar-main h5 {
+    color: rgb(152,154,158);
 }
-.sidebar-div {
-    margin: 2rem auto;
+.side-bar-main ul {
+    color: rgb(152,154,158);
+    text-align: left;
+    font-size: 1.1rem;
+    padding: 0;
+}
+.side-bar-li {
+    padding: 0.5rem 1rem;
+    color: rgba(255, 255, 255, 1);
+    transition: .5s all;
+}
+.side-bar-li:hover {
+    background: rgb(152,154,158);
+}
+.side-bar-sorted-li {
+    display: flex;
+    justify-content: space-between;
+}
+.side-bar-sorted-li i {
+    transition: .5s all;
+    color: rgb(152,154,158);
+}
+.side-bar-sorted-button i:hover {
+    color: rgba(255, 255, 255, 1);
+}
+.side-bar-sorted-button.active > i {
+    color: rgba(255, 255, 255, 1);
 }

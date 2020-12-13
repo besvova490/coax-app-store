@@ -1,24 +1,81 @@
 .card {
-    max-width: 540px;
+    padding: 0;
+    border-radius: 0;
+    border-top: 0;
+    border-left: 0;
+    margin: 1rem 0;
 }
-.image-div {
-    overflow: hidden;
+.items-list {
+    padding: 0 3rem;
 }
-.button-div {
+.div-item {
+    background: black;
+    height: 200px;
+    width: auto;
+    border: 1px solid red;
+}
+.img-item {
+    opacity: 0.4;
+    background: rgba(44, 62, 80, 0.1);
+    transition: .5s all;
+}
+.img-item:hover {
+    opacity: 1;
+}
+.img-item img {
+    height: 12rem;
+    margin: 0 auto;
+    display: block;
+}
+.item-button > i {
+    font-size: 2rem
+}
+.item-buttons{
     display: flex;
     justify-content: space-between;
 }
-.add-to-button {
+.buttom-add-to-cart {
+    border-top: 1px solid rgba(103, 128, 159, 0.5);
+    border-bottom: 1px solid rgba(103, 128, 159, 0.5);
+    transition: .5s all;
+}
+.buttom-add-to-cart:hover {
+    background-color: rgba(0, 230, 64, 0.5);
+    border-top: 1px solid rgba(103, 128, 159, 1);
+    border-bottom: 1px solid rgba(103, 128, 159, 1);
+}
+.buttom-add-to-cart:focus {
+    outline: none;
+    background-color: rgba(0, 230, 64, 0.5);
+    border-top: 1px solid rgba(103, 128, 159, 1);
+    border-bottom: 1px solid rgba(103, 128, 159, 1);
+}
+.vertical-line {
+    border-left:1px solid;
+    margin: 0 2rem;
+}
+.item-buttons.product-list {
+    justify-content: flex-end;
+}
+.button-heart {
+    transition: .5s all;
+    color: rgba(217, 30, 24, 0.4);
+}
+.fa-favorite {
+    color: rgba(217, 30, 24, 1);
+}
+.button-heart:hover {
+    color: rgba(217, 30, 24, 1);
+}
+.button-heart:focus {
+    color: rgba(217, 30, 24, 1);
+}
+.card-price {
+    margin: 0;
+    text-align: right;
+    padding-bottom: 1rem;
+    font-size: 1.5rem;
+}
+.card-footer {
     background: none;
-    border: none;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
-    padding: .5rem 1.5rem;
-    transition: .5s;
-}
-.add-to-card-button:hover {
-    background-color: rgba(191, 191, 191, .3);
-}
-.add-to-wonted-button:hover {
-    background-color: rgba(255, 215, 0, .4);
 }
