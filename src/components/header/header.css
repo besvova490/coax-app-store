@@ -41,3 +41,11 @@
 .nav-menu :last-child {
     border:none;
 }
+.sign-out {
+    transition: .5s all;
+    color: rgb(152,154,158);
+    padding-left: 1rem;
+}
+.sign-out:hover {
+    color: rgba(255, 255, 255, 1);
+}

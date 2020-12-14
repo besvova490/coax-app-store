@@ -1,0 +1,20 @@
+.authorization-form{
+    margin: 2rem auto;
+}
+.authorization-form input{
+    border: none;
+    border-bottom: 1px solid rgb(152,154,158);
+}
+.authorization-form-group {
+    padding: 1rem 0;
+}
+.button-form {
+    float: right;
+    padding: .5rem;
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    transition: .5s all;
+}
+.button-form:hover {
+    background-color: rgba(0, 230, 64, 0.5);
+}

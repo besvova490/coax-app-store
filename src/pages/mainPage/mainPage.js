@@ -17,6 +17,7 @@ class MainPage extends React.Component {
         }
     }
     componentDidMount() {
+        console.log(localStorage.getItem('token'))
         this.props.location.state = undefined
         if( !this.props.match.params.category) {
             this.props.getAllProductsRequestAction({startIndex: 0})

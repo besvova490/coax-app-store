@@ -1,6 +1,7 @@
 import React from "react";
 import InfiniteScroll from 'react-infinite-scroller';
 
+import ErrorItem from "../errorItem/errorItem";
 import ProductsItems from "../productsItems/productsItems";
 import Loader from "../loader/loader";
 
@@ -12,9 +13,7 @@ const ProductsList = ({productsBooks, toggleWantedList, addToCartList, getAllPro
     }
     if (error) {
         return (
-            <div className="alert alert-danger" role="alert">
-            This is a danger alert—check it out!
-            </div>
+            <ErrorItem/>
         )
     }
     return (

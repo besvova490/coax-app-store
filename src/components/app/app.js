@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react'
 import './app.css'
 import ErrorBoundary from "../errorBoundary/errorBoundary";
 import RouterPages from "../router/router";
+import Modal from "../modal/modal";
 
 const App = () => {
     return(
@@ -15,6 +16,7 @@ const App = () => {
                     <ErrorBoundary>
                         <div className='container-fluid'>
                             <RouterPages />
+                            <Modal />
                         </div>
                     </ErrorBoundary>
                 </PersistGate>

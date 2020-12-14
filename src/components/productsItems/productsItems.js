@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 const ProductsItems = ({itemBook, toggleWantedList, addToCartList, wantedItems}) => {
     const {id, title, imageUrl, price, author, description, publishedDate} = itemBook
-    const iClass = wantedItems.find(item => item.id === id) ? 'fa fa-heart fa-favorite': 'fa fa-heart'
+    const iClass = wantedItems.find(item => item.id === id) ? 'fa fa-heart fa-favorite' : 'fa fa-heart-o'
     return (
         <div className="card col-3" key={id}>
             <div className="img-item">

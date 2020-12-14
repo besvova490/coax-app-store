@@ -10,9 +10,6 @@
     border: none;
     border-bottom: 1px solid rgb(152,154,158);
 }
-.nav-bar-search-from > input:focus {
-    outline: none;
-}
 .nav-bar-button-search{
     font-size: 1.5rem;
     color: rgb(152,154,158);

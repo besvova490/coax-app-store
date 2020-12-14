@@ -42,8 +42,7 @@ class WontedList extends React.Component {
                                                               key={item.id}
                                                               buttonLabel='Remove'
                                                               toggleWantedList={toggleToWantedList}
-                                                              addToCartList={addToCartList} wantedItems={[]}
-                                                              itemsBooks={wantedList}/>)
+                                                              addToCartList={addToCartList} wantedItems={filteredProducts}/>)
                     }
                 </div>
             </div>
