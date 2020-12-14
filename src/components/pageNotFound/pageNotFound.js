@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './pageNotFound.css'
+import './pageNotFound.css';
 
-export default function PageNotFound () {
+const PageNotFound = () => {
     return (
         <div className="container">
             <div className="row">
@@ -17,3 +17,5 @@ export default function PageNotFound () {
         </div>
     );
 };
+
+export default PageNotFound;

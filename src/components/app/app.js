@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
 import {Provider} from "react-redux";
 import {store, persistor} from "../../redux/configStore";
-import { PersistGate } from 'redux-persist/integration/react'
+import { PersistGate } from "redux-persist/integration/react";
 
-import './app.css'
 import ErrorBoundary from "../errorBoundary/errorBoundary";
 import RouterPages from "../router/router";
+
+import "./app.css";
 
 const App = () => {
     return(

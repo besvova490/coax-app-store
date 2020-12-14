@@ -1,30 +1,34 @@
 import React from "react";
-import {connect} from 'react-redux'
+import {connect} from "react-redux";
 
 import Loader from "../../components/loader/loader";
+import ErrorItem from "../../components/errorItem/errorItem";
 
 import {addToCartList} from "../../redux/cart/cartActions";
 import {toggleToWantedList} from "../../redux/wanted/wantedsActions";
-import {deleteProductFromStore, getAllProductByIdRequestAction} from "../../redux/item-product/item-productActions"
+import {deleteProductFromStore, getAllProductByIdRequestAction} from "../../redux/item-product/item-productActions";
 
-import './itemDescriptionPage.css'
+import "./itemDescriptionPage.css";
 
 class ItemDescriptionPage extends React.Component {
 
     componentDidMount() {
-        this.props.getAllProductByIdRequestAction({id: this.props.itemId})
-    }
+        this.props.getAllProductByIdRequestAction({id: this.props.itemId});
+    };
 
     componentWillUnmount() {
-        this.props.deleteProductFromStore()
-    }
+        this.props.deleteProductFromStore();
+    };
 
     render() {
-        const {isAuth, item, addToCartList, toggleToWantedList, processing} = this.props
+        const {isAuth, item, error, addToCartList, toggleToWantedList, processing} = this.props
+
         if (processing) {
             return <Loader />
         }
-
+        if (error) {
+            return <ErrorItem />
+        }
         return (
             <div className="row">
                 <div className="product-item col-8 col-md-10 col-sm-12">
@@ -54,11 +58,13 @@ class ItemDescriptionPage extends React.Component {
                                             onClick={() => addToCartList(item)}>Add to cart
                                     </button>
                                     <span className="vertical-line"/>
-                                    {isAuth ? (<button type="button"
+                                    {isAuth ?
+                                        (<button type="button"
                                                        className="item-button button-heart"
                                                        onClick={() => toggleToWantedList(item)}>
-                                        <i className="fa fa-heart" aria-hidden="true"/>
-                                    </button>): null}
+                                            <i className="fa fa-heart" aria-hidden="true"/>
+                                        </button>)
+                                        : null}
                                 </div>
                             </div>
                         </div>
@@ -66,18 +72,24 @@ class ItemDescriptionPage extends React.Component {
                 </div>
             </div>
         );
-    }
+    };
 }
+
 const mapStateToProps = (state, ownProps) => {
     return {
         itemId: ownProps.match.params.id,
         item: state.productReducer.itemProduct,
+        isAuth: state.auth.isAuth,
+        error: state.productReducer.error,
         processing: state.productReducer.processing,
-        isAuth: state.auth.isAuth}
+    }
+
 }
+
 const mapDispatchToProps = {
     addToCartList,
-    toggleToWantedList,
     deleteProductFromStore,
+    toggleToWantedList,
     getAllProductByIdRequestAction}
+
 export default connect(mapStateToProps, mapDispatchToProps)(ItemDescriptionPage);

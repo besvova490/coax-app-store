@@ -1,7 +1,7 @@
 import * as types from './cartActionsTypes'
+import deepCopy from "../../helpers/deepCopy";
 
 const initialState = {
-    error: false,
     cartList: {},
     totalPrice: 0,
 }
@@ -10,8 +10,8 @@ export default function reducer(state = initialState, action) {
     switch (action.type) {
         case types.ADD_TO_CART_LIST: {
             if (action.payload.id in state.cartList) {
-                const newCartObj = JSON.parse(JSON.stringify(state.cartList[action.payload.id]))
-                const newCartList = JSON.parse(JSON.stringify(state.cartList))
+                const newCartObj = deepCopy(state.cartList[action.payload.id])
+                const newCartList = deepCopy(state.cartList)
                 newCartObj.quantity += 1
                 newCartList[action.payload.id] = newCartObj
                 return {
@@ -23,8 +23,8 @@ export default function reducer(state = initialState, action) {
             }
         }
         case types.DEC_IN_CART_LIST: {
-            const newCartObj = JSON.parse(JSON.stringify(state.cartList[action.payload.id]))
-            const newCartList = JSON.parse(JSON.stringify(state.cartList))
+            const newCartObj = deepCopy(state.cartList[action.payload.id])
+            const newCartList = deepCopy(state.cartList)
             newCartObj.quantity -= 1
             if (newCartObj.quantity <= 0) {
                 delete newCartList[action.payload.id]

@@ -1,4 +1,4 @@
-import * as types from './modalActionsTypes'
+import * as types from './modalActionsTypes';
 
 const initialState = {
     showModal: false

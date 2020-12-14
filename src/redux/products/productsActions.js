@@ -1,5 +1,5 @@
-import * as types from './productsActionsTypes'
-import serializerApiData from '../../helpers/serializer'
+import * as types from './productsActionsTypes';
+import serializerApiData from '../../helpers/serializer';
 
 export function getAllProductsRequestAction(payload){
     return {type: types.GET_PRODUCTS_ALL_REQUEST, payload}

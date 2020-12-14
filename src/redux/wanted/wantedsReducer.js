@@ -1,4 +1,4 @@
-import * as types from './wantedsActionsTypes'
+import * as types from './wantedsActionsTypes';
 
 const initialState = {
     error: false,

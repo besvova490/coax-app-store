@@ -1,7 +1,8 @@
 import React from "react";
-import './loader.css'
 
-export default function Loader() {
+import "./loader.css";
+
+const Loader = () => {
     return (
         <div className='col-12 loader-main-div'>
             <div className="loadingio-spinner-ellipsis-majn6lld8n">
@@ -16,3 +17,5 @@ export default function Loader() {
         </div>
     )
 }
+
+export default Loader;

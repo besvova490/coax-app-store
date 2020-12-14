@@ -1,6 +1,7 @@
 import React from "react";
-import './productsItems.css'
 import {Link} from "react-router-dom";
+
+import "./productsItems.css";
 
 const ProductsItems = ({itemBook, toggleWantedList, addToCartList, wantedItems}) => {
     const {id, title, imageUrl, price, author, description, publishedDate} = itemBook

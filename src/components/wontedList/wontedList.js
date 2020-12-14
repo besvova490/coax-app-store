@@ -1,5 +1,5 @@
 import React from "react";
-import {connect} from "react-redux"
+import {connect} from "react-redux";
 
 import ProductsItems from "../productsItems/productsItems";
 import SearchForm from "../searchForm/searchForm";
@@ -14,17 +14,21 @@ class WontedList extends React.Component {
             search: ''
         }
     }
+
     handleChange = (event) => {
         this.setState({search: event.target.value})
     }
     handleSubmit = (event) => {
         event.preventDefault()
     }
+
     render() {
+
         const {booksItems, toggleToWantedList, addToCartList} = this.props
         const {search} = this.state
         const {wantedList} = booksItems
         const filteredProducts = wantedList.filter(item => {return item.title.toLowerCase().indexOf(search.toLowerCase()) !== -1})
+
         if (!filteredProducts.length) {
             return (
                 <div className='row'>
@@ -33,6 +37,7 @@ class WontedList extends React.Component {
                 </div>
             )
         }
+
         return (
             <div className='container'>
                 <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} value={search}/>
@@ -47,9 +52,15 @@ class WontedList extends React.Component {
                 </div>
             </div>
         );
-    }
+    };
 }
+
 const mapStateToProps = ({...state}) => {
     return {booksItems: state.wanted}
 }
-export default connect(mapStateToProps, {toggleToWantedList, addToCartList})(WontedList);
+const mapDispatchToProps = {
+    toggleToWantedList,
+    addToCartList
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(WontedList);

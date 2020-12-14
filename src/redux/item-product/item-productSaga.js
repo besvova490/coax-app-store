@@ -1,11 +1,16 @@
 import {takeLatest, put, call} from 'redux-saga/effects';
+
 import * as types from './item-productActionsTypes';
-import * as actions from './item-productActions'
-import {getBookById} from '../../libs/products'
+import * as actions from './item-productActions';
+import {getBookById} from '../../libs/products';
 
 export function* getBookByIdSaga(action) {
-    const data = yield call(getBookById, {...action.payload})
-    yield put(actions.getAllProductByIdSuccessAction(data))
+    try {
+        const data = yield call(getBookById, {...action.payload});
+        yield put(actions.getAllProductByIdSuccessAction(data));
+    }catch (error) {
+        yield put(actions.getProductApiError());
+    }
 }
 
 export default function* watchByIdBook() {

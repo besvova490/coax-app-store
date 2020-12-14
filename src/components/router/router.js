@@ -1,13 +1,13 @@
 import React from "react";
-import {BrowserRouter as Router, Route, Redirect, Switch} from 'react-router-dom'
+import {BrowserRouter as Router, Route, Redirect, Switch} from "react-router-dom";
 
 import CartPage from "../../pages/cartPage/cartPage";
 import Header from "../header/header";
 import ItemDescriptionPage from "../../pages/itemDescriptionPage/itemDescriptionPage";
 import MainPage from "../../pages/mainPage/mainPage";
+import Modal from "../modal/modal";
 import PageNotFound from "../pageNotFound/pageNotFound";
 import WontedPage from "../../pages/wontedPage/wontedPage";
-import Modal from "../modal/modal";
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     return (

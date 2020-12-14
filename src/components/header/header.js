@@ -1,9 +1,10 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-import {connect} from 'react-redux'
+import React from 'react';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-import {userLogOutAction} from '../../redux/auth/authActions'
-import './header.css'
+import {userLogOutAction} from '../../redux/auth/authActions';
+
+import './header.css';
 
 const Header = ({isAuth, userLogOutAction}) => {
     return (
@@ -32,4 +33,8 @@ const mapStateToProps =  (state) => {
     }
 }
 
-export default connect(mapStateToProps, {userLogOutAction})(Header);
+const mapDispatchToProps = {
+    userLogOutAction
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

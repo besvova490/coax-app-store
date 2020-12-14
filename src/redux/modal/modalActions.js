@@ -1,4 +1,4 @@
-import * as types from './modalActionsTypes'
+import * as types from './modalActionsTypes';
 
 export function openModal() {
     return {type: types.OPEN_MODAL}

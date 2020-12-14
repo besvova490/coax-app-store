@@ -1,7 +1,7 @@
 import React from "react";
 import {withRouter} from "react-router";
 
-import './sideBar.css'
+import "./sideBar.css";
 
 const SideBar = ({history, getByCategory, sortedBy, match}) => {
     const category = match.params.category || 'history'
@@ -42,6 +42,6 @@ const SideBar = ({history, getByCategory, sortedBy, match}) => {
             </div>
         </div>
     );
-}
+};
 
-export default withRouter(SideBar)
+export default withRouter(SideBar);

@@ -1,12 +1,12 @@
 import React from "react";
-import ReactDOM from "react-dom"
-import {connect} from "react-redux"
+import ReactDOM from "react-dom";
+import {connect} from "react-redux";
 
 import AuthorizationForm from "../authorizationForm/authorizationFrom";
 
-import './modal.css'
+import "./modal.css";
 
-function Modal({showModal}) {
+const Modal = ({showModal}) => {
         if (!showModal) {
             return null
         }
@@ -17,7 +17,11 @@ function Modal({showModal}) {
                 </div>
             </div>, document.getElementById('portal'));
 }
+
 const mapStateToProps = (state) => {
-    return {showModal: state.modal.showModal}
+    return {
+        showModal: state.modal.showModal
+    }
 }
+
 export default connect(mapStateToProps,null)(Modal)

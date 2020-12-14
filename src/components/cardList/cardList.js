@@ -1,11 +1,11 @@
 import React from "react";
 
 import CartItem from "../cartItem/cartItem";
-import './cardList.css';
 
-
+import "./cardList.css";
 
 class CardList extends React.Component {
+
     componentDidMount() {
         this.props.updateCartList(this.props.itemsCard)
     }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import './searchForm.css'
+import "./searchForm.css";
 
 const SearchForm = ({handleChange, handleSubmit, value}) => {
     return (
@@ -14,7 +14,7 @@ const SearchForm = ({handleChange, handleSubmit, value}) => {
                 </button>
             </form>
         </div>
-    )
-}
+    );
+};
 
-export default SearchForm
+export default SearchForm;

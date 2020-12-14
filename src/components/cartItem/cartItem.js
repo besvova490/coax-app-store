@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CartItem({item, index, addToCartList, delFromCartList, decFromCartList}) {
+const CartItem = ({item, index, addToCartList, delFromCartList, decFromCartList}) => {
     return (
         <tr>
             <th scope="row">{index + 1}</th>
@@ -26,3 +26,5 @@ export default function CartItem({item, index, addToCartList, delFromCartList, d
         </tr>
     );
 }
+
+export default CartItem;

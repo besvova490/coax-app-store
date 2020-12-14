@@ -1,11 +1,13 @@
 import React from 'react';
 
-import './errorBoundary.css'
+import './errorBoundary.css';
 
 export default class ErrorBoundary extends React.Component {
-
-    state = {
-        hasError: false
+    constructor() {
+        super();
+        this.state = {
+            hasError: false
+        };
     };
 
     componentDidCatch() {
