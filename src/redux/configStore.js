@@ -10,16 +10,20 @@ const persistConfig = {
     key: 'root',
     storage,
     blacklist: ['product', 'productReducer']
-}
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-const initialiseSagaMiddleware = createSagaMiddleware()
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const initialiseSagaMiddleware = createSagaMiddleware();
+const composeEnhancers =  process.env.NODE_ENV !== 'production' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+    ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ name: 'MyApp', actionsBlacklist: ['REDUX_STORAGE_SAVE']})
+    : compose;
+
 const store = createStore(
     persistedReducer,
-    compose(applyMiddleware(initialiseSagaMiddleware),
-        process.env.NODE_ENV === 'development' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__())
-)
-const persistor = persistStore(store)
+    composeEnhancers(applyMiddleware(initialiseSagaMiddleware))
+);
+const persistor = persistStore(store);
 
-initialiseSagaMiddleware.run(rootSaga)
+initialiseSagaMiddleware.run(rootSaga);
 
-export {store, persistor}
+export {store, persistor};
