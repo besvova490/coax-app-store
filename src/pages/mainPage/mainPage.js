@@ -5,6 +5,7 @@ import ProductsList from "../../components/productsList/productsList";
 import SideBar from "../../components/sideBar/sideBar";
 import SearchForm from "../../components/searchForm/searchForm";
 
+import {openModal} from "../../redux/modal/modalActions";
 import {toggleToWantedList} from "../../redux/wanted/wantedsActions";
 import {addToCartList} from "../../redux/cart/cartActions";
 import * as actions from '../../redux/products/productsActions'
@@ -17,7 +18,6 @@ class MainPage extends React.Component {
         }
     }
     componentDidMount() {
-        console.log(localStorage.getItem('token'))
         this.props.location.state = undefined
         if( !this.props.match.params.category) {
             this.props.getAllProductsRequestAction({startIndex: 0})
@@ -42,12 +42,14 @@ class MainPage extends React.Component {
     }
     render() {
         const {
+            isAuth,
             addToCartList,
             allProducts,
             error,
             getAllBooksInfinityScrollRequestAction,
             getProductsByCategoryRequestAction,
             getSortedProductsRequestAction,
+            openModal,
             sortedProducts,
             toggleToWantedList,
             wantedItems,
@@ -56,12 +58,12 @@ class MainPage extends React.Component {
             <div className='row main-div'>
                 <SideBar getByCategory={getProductsByCategoryRequestAction}
                          sortedBy={getSortedProductsRequestAction}/>
-                <div className='col-md-10'>
+                <div className='col-md-10 main-page-content offset-2'>
                     <SearchForm handleChange={this.handleChange}
                                 handleSubmit={this.handleSubmit}
                                 value={this.state.search}/>
                     <ProductsList productsBooks={allProducts}
-                                  toggleWantedList={toggleToWantedList}
+                                  toggleWantedList={isAuth ? toggleToWantedList: openModal}
                                   addToCartList={addToCartList}
                                   getAllProductsRequestAction={getAllBooksInfinityScrollRequestAction}
                                   sortedProducts={sortedProducts}
@@ -76,11 +78,12 @@ const mapStateToProps = (state) => {
     return {
         error: state.product.error,
         allProducts: state.product.allProducts,
-        wantedItems: state.wanted.wantedList
+        wantedItems: state.wanted.wantedList,
+        isAuth: state.auth.isAuth
     }
 }
 
 export default connect(
     mapStateToProps,
-    {...actions, toggleToWantedList, addToCartList}
+    {...actions, toggleToWantedList, addToCartList, openModal}
     )(MainPage);

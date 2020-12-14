@@ -1,8 +1,11 @@
 .side-bar {
-    height: 91vh;
     background: rgba(55, 60, 66, 1);
     margin: 0;
     padding: 0;
+    position: fixed;
+    z-index: 90;
+    top: 4rem;
+    height: 100%;
 }
 .side-bar-main {
     padding: 0 1rem;

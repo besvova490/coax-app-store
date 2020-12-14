@@ -1,33 +1,9 @@
 import React from "react";
 
+import CartItem from "../cartItem/cartItem";
 import './cardList.css';
 
-const ItemCart = ({item, index, addToCartList, delFromCartList, decFromCartList}) => {
-    return (
-        <tr>
-            <th scope="row">{index + 1}</th>
-            <td>{item.title.slice(0, 50)}...</td>
-            <td>{item.quantity}</td>
-            <td>${(item.quantity * item.price).toFixed(2)}</td>
-            <td>
-                <div className="cart-action-buttons">
-                    <button className="cart-action-button"
-                            onClick={() => addToCartList(item)}>
-                        <i className="fa fa-plus-square-o" aria-hidden="true"/>
-                    </button>
-                    <button className="cart-action-button"
-                            onClick={() => decFromCartList(item)}>
-                        <i className="fa fa-minus-square-o" aria-hidden="true"/>
-                    </button>
-                    <button className="cart-action-button"
-                            onClick={() => delFromCartList(item)}>
-                        <i className="fa fa-trash-o" aria-hidden="true"/>
-                    </button>
-                </div>
-            </td>
-        </tr>
-    );
-}
+
 
 class CardList extends React.Component {
     componentDidMount() {
@@ -42,7 +18,7 @@ class CardList extends React.Component {
         const {itemsCard, totalPrice, addToCartList, delFromCartList, decFromCartList} = this.props
         const items = Object.keys(itemsCard).map((key) => itemsCard[key])
         return (
-            <div className="col-md-10 offset-md-1">
+            <div className="col-md-10 offset-md-1 col-lg-8 offset-lg-2">
                 <table className="table table-hover">
                     <thead>
                     <tr>
@@ -55,7 +31,7 @@ class CardList extends React.Component {
                     </thead>
                     <tbody>
                     {
-                        items.map((item, index) => <ItemCart
+                        items.map((item, index) => <CartItem
                             key={item.id}
                             item={item}
                             index={index}

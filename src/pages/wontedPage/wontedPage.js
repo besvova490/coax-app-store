@@ -1,17 +1,17 @@
 import React from "react";
 import WontedList from "../../components/wontedList/wontedList";
 import {connect} from "react-redux"
-import {toggleModal} from "../../redux/modal/modalActions";
+import {openModal} from "../../redux/modal/modalActions";
 
 class WontedPage extends React.Component {
     componentDidMount() {
         if (!this.props.isAuth){
-            this.props.toggleModal()
+            this.props.openModal()
         }
     }
     render() {
         return (
-            <div>
+            <div className="wanted-page">
                 <WontedList/>
             </div>
         )
@@ -20,4 +20,4 @@ class WontedPage extends React.Component {
 const mapStateToProps = (state) => {
     return {isAuth: state.auth.isAuth}
 }
-export default connect(mapStateToProps, {toggleModal})(WontedPage);
+export default connect(mapStateToProps, {openModal})(WontedPage);

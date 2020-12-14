@@ -12,3 +12,12 @@ ul{
 input:focus {
     outline: none;
 }
+.main-page-content {
+        padding-top: 5%;
+}
+.wanted-page {
+    padding-top: 5%;
+}
+.cart-page {
+    padding-top: 8%;
+}

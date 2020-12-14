@@ -7,6 +7,7 @@ import ItemDescriptionPage from "../../pages/itemDescriptionPage/itemDescription
 import MainPage from "../../pages/mainPage/mainPage";
 import PageNotFound from "../pageNotFound/pageNotFound";
 import WontedPage from "../../pages/wontedPage/wontedPage";
+import Modal from "../modal/modal";
 
 const PrivateRoute = ({component: Component, ...rest}) => {
     return (
@@ -30,6 +31,7 @@ const RouterPages = () => {
                 <Route exact path='/' component={MainPage} />
                 <Route path='*' component={PageNotFound}/>
             </Switch>
+            <Modal />
         </Router>
     )
 }

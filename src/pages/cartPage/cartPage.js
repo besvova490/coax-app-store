@@ -7,7 +7,7 @@ import CardList from "../../components/cardList/cardList";
 
 const CartPage = ({ itemsCard, totalPrice, addToCartList, delFromCartList, decFromCartList, updateCartList}) => {
     return (
-        <div>
+        <div className="cart-page">
             <CardList itemsCard={itemsCard}
                       totalPrice={totalPrice}
                       addToCartList={addToCartList}

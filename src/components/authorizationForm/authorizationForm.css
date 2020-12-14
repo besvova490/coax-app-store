@@ -3,6 +3,7 @@
 }
 .authorization-form input{
     border: none;
+    background: none;
     border-bottom: 1px solid rgb(152,154,158);
 }
 .authorization-form-group {
@@ -11,10 +12,34 @@
 .button-form {
     float: right;
     padding: .5rem;
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+    border-top: 1px solid rgb(152,154,158);
+    border-bottom: 1px solid rgb(152,154,158);
     transition: .5s all;
+    color: rgba(255, 255, 255, 1);;
 }
 .button-form:hover {
     background-color: rgba(0, 230, 64, 0.5);
+}
+.form-buttons {
+    padding-top: 1rem;
+    border-top: 1px solid rgb(152,154,158);
+    display: flex;
+    justify-content: space-between;
+}
+.form-buttons a {
+    color: rgba(255, 255, 255, 1);;
+}
+.form-buttons a:hover {
+    text-decoration: none;
+}
+.error-form{
+    padding: 0.5rem;
+    background: rgba(217, 30, 24, 0.7);
+    text-align: center;
+    border-bottom: 1px solid red;
+    border-top: 1px solid red;
+}
+.error-form p {
+    font-size: 1.3rem;
+    margin: 0;
 }

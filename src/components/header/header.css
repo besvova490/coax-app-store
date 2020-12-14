@@ -20,6 +20,9 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+    position: fixed;
+    width: 100%;
+    z-index: 90;
 }
 .nav-menu{
     display: flex;

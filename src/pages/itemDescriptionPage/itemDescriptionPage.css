@@ -1,5 +1,5 @@
 .product-item {
-    margin:3rem auto;
+    margin: 7% auto;
     display: flex;
 }
 .product-content {
@@ -10,4 +10,11 @@
 }
 .product-content-ul {
     padding-right: 13rem;
+}
+.item-buttons.description-page {
+    justify-content: space-around;
+}
+.description-page > .vertical-line {
+    border-left:1px solid;
+    margin: 0;
 }

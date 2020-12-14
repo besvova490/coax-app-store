@@ -20,14 +20,14 @@ class ItemDescriptionPage extends React.Component {
     }
 
     render() {
-        const {item, addToCartList, toggleToWantedList, processing} = this.props
+        const {isAuth, item, addToCartList, toggleToWantedList, processing} = this.props
         if (processing) {
             return <Loader />
         }
 
         return (
             <div className="row">
-                <div className="product-item col col-8 offset-2">
+                <div className="product-item col-8 col-md-10 col-sm-12">
                     <div className="item-image">
                         <img src={item.imageUrl} alt="..."/>
                     </div>
@@ -48,17 +48,17 @@ class ItemDescriptionPage extends React.Component {
                             </div>
                             <div className="product-buy-info col-4">
                                 <h4>Price: $ {item.price}</h4>
-                                <div className="item-buttons">
+                                <div className="item-buttons description-page">
                                     <button type="button"
                                             className="item-button buttom-add-to-cart"
                                             onClick={() => addToCartList(item)}>Add to cart
                                     </button>
                                     <span className="vertical-line"/>
-                                    <button type="button"
-                                            className="item-button button-heart"
-                                            onClick={() => toggleToWantedList(item)}>
+                                    {isAuth ? (<button type="button"
+                                                       className="item-button button-heart"
+                                                       onClick={() => toggleToWantedList(item)}>
                                         <i className="fa fa-heart" aria-hidden="true"/>
-                                    </button>
+                                    </button>): null}
                                 </div>
                             </div>
                         </div>
@@ -72,6 +72,12 @@ const mapStateToProps = (state, ownProps) => {
     return {
         itemId: ownProps.match.params.id,
         item: state.productReducer.itemProduct,
-        processing: state.productReducer.processing}
+        processing: state.productReducer.processing,
+        isAuth: state.auth.isAuth}
 }
-export default connect(mapStateToProps, {addToCartList, toggleToWantedList, deleteProductFromStore, getAllProductByIdRequestAction})(ItemDescriptionPage);
+const mapDispatchToProps = {
+    addToCartList,
+    toggleToWantedList,
+    deleteProductFromStore,
+    getAllProductByIdRequestAction}
+export default connect(mapStateToProps, mapDispatchToProps)(ItemDescriptionPage);

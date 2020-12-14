@@ -6,12 +6,14 @@ const initialState = {
 
 export default function reducer(state=initialState, action) {
     switch (action.type){
-        case types.TOGGLE_MODAL: {
-            const newShowModal = !state.showModal
+        case types.OPEN_MODAL: {
             return {
-                ...state, showModal: newShowModal
+                ...state, showModal: true
             }
         }
+        case types.CLOSE_MODAL: {
+            return initialState
+            }
         default:
             return state
     }
