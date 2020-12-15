@@ -5,30 +5,37 @@ import ProductsList from "../../components/productsList/productsList";
 import SideBar from "../../components/sideBar/sideBar";
 import SearchForm from "../../components/searchForm/searchForm";
 
+import {addToCartList} from "../../redux/cart/cartActions";
 import {openModal} from "../../redux/modal/modalActions";
 import {toggleToWantedList} from "../../redux/wanted/wantedsActions";
-import {addToCartList} from "../../redux/cart/cartActions";
 import * as actions from "../../redux/products/productsActions";
 
 class MainPage extends React.Component {
     constructor() {
         super();
         this.state = {
-            search: ""
+            search: "",
         };
     };
     componentDidMount() {
         this.props.location.state = undefined;
-        if( !this.props.match.params.category) {
+        if(!this.props.match.params.category) {
             this.props.getAllProductsRequestAction({startIndex: 0});
-        } else {
+        }else {
             this.props.getProductsByCategoryRequestAction({startIndex: 0, q: `subject:${this.props.match.params.category}`});
+        }
+        if (this.props.location.pathname.includes('login')) {
+            this.props.openModal()
         }
     };
     componentDidUpdate() {
         if (this.props.location.state) {
+            window.scrollTo(0, 0)
             this.props.getAllProductsRequestAction({startIndex: 0});
             this.props.location.state = undefined;
+        }
+        if (this.props.location.pathname.includes('login') && !this.props.isAuth) {
+            this.props.openModal()
         }
     };
 
@@ -50,7 +57,7 @@ class MainPage extends React.Component {
             getAllBooksInfinityScrollRequestAction,
             getProductsByCategoryRequestAction,
             getSortedProductsRequestAction,
-            openModal,
+            startIndex,
             sortedProducts,
             toggleToWantedList,
             wantedItems,
@@ -64,12 +71,14 @@ class MainPage extends React.Component {
                                 handleSubmit={this.handleSubmit}
                                 value={this.state.search}/>
                     <ProductsList productsBooks={allProducts}
-                                  toggleWantedList={isAuth ? toggleToWantedList: openModal}
+                                  toggleWantedList={toggleToWantedList}
                                   addToCartList={addToCartList}
                                   getAllProductsRequestAction={getAllBooksInfinityScrollRequestAction}
                                   sortedProducts={sortedProducts}
                                   wantedItems={wantedItems}
-                                  error={error}/>
+                                  error={error}
+                                  startIndex={startIndex}
+                                  isAuth={isAuth}/>
                 </div>
             </div>
         );
@@ -81,7 +90,8 @@ const mapStateToProps = (state) => {
         error: state.product.error,
         allProducts: state.product.allProducts,
         wantedItems: state.wanted.wantedList,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth,
+        startIndex: state.product.startIndex
     }
 };
 

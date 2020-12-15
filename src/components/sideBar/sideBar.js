@@ -4,7 +4,20 @@ import {withRouter} from "react-router";
 import "./sideBar.css";
 
 const SideBar = ({history, getByCategory, sortedBy, match}) => {
-    const category = match.params.category || 'history'
+
+    const category = match.params.category || 'medical'
+
+    const categoriesList = ['History', 'Science', 'Engineering', 'Medical', 'Arts']
+
+    const liCategoryBuilder = (category) => {
+        return (
+            <li key={category}
+                onClick={() => {history.push(`/categories/${category}`);
+                getByCategory({q: `subject:${category}`})}}
+                className="side-bar-li">{category}</li>
+        )
+    }
+
     return (
         <div className="col col-2 side-bar">
             <div className="side-bar-main">
@@ -32,11 +45,7 @@ const SideBar = ({history, getByCategory, sortedBy, match}) => {
                 <div className="side-bar-categories">
                     <h5>Categories:</h5>
                     <ul className="side-bar-ul">
-                        <li onClick={() => {history.push('/categories/history'); getByCategory({q: 'subject:history'})}} className="side-bar-li">History</li>
-                        <li onClick={() => {history.push('/categories/science'); getByCategory({q: 'subject:science'})}} className="side-bar-li">Science</li>
-                        <li onClick={() => {history.push('/categories/Engineering'); getByCategory({q: 'subject:Engineering'})}} className="side-bar-li">Engineering</li>
-                        <li onClick={() => {history.push('/categories/Medical'); getByCategory({q: 'subject:Medical'})}} className="side-bar-li">Medical</li>
-                        <li onClick={() => {history.push('/categories/Arts'); getByCategory({q: 'subject:Arts'})}} className="side-bar-li">Arts</li>
+                        {categoriesList.map(liCategoryBuilder)}
                     </ul>
                 </div>
             </div>

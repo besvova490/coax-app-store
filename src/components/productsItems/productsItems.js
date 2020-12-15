@@ -3,7 +3,7 @@ import {Link} from "react-router-dom";
 
 import "./productsItems.css";
 
-const ProductsItems = ({itemBook, toggleWantedList, addToCartList, wantedItems}) => {
+const ProductsItems = ({isAuth, itemBook, toggleWantedList, addToCartList, wantedItems}) => {
     const {id, title, imageUrl, price, author, description, publishedDate} = itemBook
     const iClass = wantedItems.find(item => item.id === id) ? 'fa fa-heart fa-favorite' : 'fa fa-heart-o'
     return (
@@ -28,11 +28,12 @@ const ProductsItems = ({itemBook, toggleWantedList, addToCartList, wantedItems})
                             className="item-button buttom-add-to-cart"
                             onClick={() => addToCartList(itemBook)}>Add to cart</button>
                     <span className="vertical-line"/>
+                    {isAuth &&
                     <button type="button"
-                            className="item-button button-heart"
-                            onClick={() => toggleWantedList(itemBook)}>
+                                       className="item-button button-heart"
+                                       onClick={() => toggleWantedList(itemBook)}>
                         <i className={iClass} aria-hidden="true"/>
-                    </button>
+                    </button>}
                 </div>
             </div>
         </div>

@@ -26,6 +26,8 @@ const RouterPages = () => {
                 <Route exact path='/favorites-page/login' component={WontedPage}/>
                 <Route exact path='/favorites-page/:id' component={ItemDescriptionPage}/>
                 <Route exact path='/cart-page/' component={CartPage}/>
+                <Route exact path='/login' component={MainPage}/>
+                <Route exact path='/categories/login' component={MainPage}/>
                 <Route exact path='/categories/:category' component={MainPage}/>
                 <Route exact path='/:id' component={ItemDescriptionPage}/>
                 <Route exact path='/' component={MainPage} />

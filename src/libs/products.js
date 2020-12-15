@@ -4,7 +4,7 @@ export async function getBooks(payload) {
     try {
         const resp = await API.get('volumes', {
             params: {
-                q: 'subject:History',
+                q: 'subject:medical',
                 projection: 'full',
                 filter: 'paid-ebooks',
                 maxResults: 12,

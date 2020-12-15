@@ -4,6 +4,7 @@ const initialState = {
     error: false,
     processing: true,
     allProducts: [],
+    startIndex: 12,
 }
 
 export default function reducer(state = initialState, action) {
@@ -17,17 +18,17 @@ export default function reducer(state = initialState, action) {
         case types.GET_PRODUCTS_ALL_SUCCESS:
         case types.GET_SORTED_PRODUCTS_SUCCESS: {
             return {
-                ...state, allProducts: [...action.payload], processing: false, error: false,
+                ...state, allProducts: [...action.payload], processing: false, error: false, startIndex: 12
             }
         }
         case types.GET_PRODUCTS_ALL_INFINITY_SCROLL_SUCCESS: {
             return {
-                ...state, allProducts: [...state.allProducts, ...action.payload], processing: false, error: false,
+                ...state, allProducts: [...state.allProducts, ...action.payload], processing: false, error: false, startIndex: state.startIndex+12,
             }
         }
         case types.GET_PRODUCTS_BY_CATEGORY_SUCCESS:{
             return {
-                ...state, allProducts: [...action.payload], processing: false, error: false,
+                ...state, allProducts: [...action.payload], processing: false, error: false, startIndex: 12
             }
         }
         case types.API_ERROR: {
