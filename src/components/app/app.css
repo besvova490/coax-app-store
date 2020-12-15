@@ -21,3 +21,14 @@ input:focus {
 .cart-page {
     padding-top: 8%;
 }
+.arrow-to-top{
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    font-size: 2.4rem;
+    color: rgb(152,154,158);
+    transition: .5s all;
+}
+.arrow-to-top:hover{
+    color: rgba(36, 37, 42, 1);
+}
