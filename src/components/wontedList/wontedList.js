@@ -24,7 +24,7 @@ class WontedList extends React.Component {
 
     render() {
 
-        const {booksItems, toggleToWantedList, addToCartList} = this.props
+        const {booksItems, toggleToWantedList, addToCartList, isAuth} = this.props
         const {search} = this.state
         const {wantedList} = booksItems
         const filteredProducts = wantedList.filter(item => {return item.title.toLowerCase().indexOf(search.toLowerCase()) !== -1})
@@ -43,11 +43,13 @@ class WontedList extends React.Component {
                 <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit} value={search}/>
                 <div className='row'>
                     {
-                        filteredProducts.map(item => <ProductsItems itemBook={item}
-                                                              key={item.id}
-                                                              buttonLabel='Remove'
-                                                              toggleWantedList={toggleToWantedList}
-                                                              addToCartList={addToCartList} wantedItems={filteredProducts}/>)
+                        filteredProducts.map(item => <ProductsItems
+                            itemBook={item}
+                            key={item.id}
+                            toggleWantedList={toggleToWantedList}
+                            addToCartList={addToCartList}
+                            wantedItems={filteredProducts}
+                            isAuth={isAuth}/>)
                     }
                 </div>
             </div>

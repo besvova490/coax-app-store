@@ -13,7 +13,7 @@ class WontedPage extends React.Component {
     render() {
         return (
             <div className="wanted-page">
-                <WontedList/>
+                <WontedList isAuth={this.props.isAuth}/>
             </div>
         );
     };

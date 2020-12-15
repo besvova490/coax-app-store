@@ -11,17 +11,11 @@ const Header = ({isAuth, userLogOutAction, history}) => {
     return (
         <div className="row naw-bar">
             <div className="store-logo col-2">
-                <Link to={{
-                    pathname: "/",
-                    state: {}
-                }}>Side bar <i className="fa fa-book" aria-hidden="true"/></Link>
+                <Link to={{ pathname: "/", state: {}}}>Side bar <i className="fa fa-book" aria-hidden="true"/></Link>
             </div>
             <nav className="nav-menu col-10">
-                <Link to={{
-                    pathname: "/",
-                    state: {}
-                }}>Home</Link>
-                <Link to="/favorites-page/">Favorites</Link>
+                <Link to={{ pathname: "/", state: {} }}>Home</Link>
+                <Link to="/favorites-page/">Wishlist</Link>
                 <Link to="/cart-page/"><i className="fa fa-shopping-basket" aria-hidden="true"/></Link>
                 {isAuth
                     ? <button className="sign-out" onClick={userLogOutAction}><i className="fa fa-sign-out" aria-hidden="true"/></button>
